@@ -8,7 +8,7 @@
     <meta content="Learnify dibuat ditujukan agar para siswa dan guru dapat terus belajar dan mengajar dimana saja dan kapan saja." name="Description" />
     <meta content="Learnify, E-learning, Open Source, Syauqi Zaidan Khairan Khalaf, github, programmer indonesia" name="keywords" />
     <link rel="icon" href="<?= base_url('assets/') ?>img/favicon.png" type="image/png">
-    <title>Learnify - Belajar Dimana Saja & Kapan Saja !</title>
+    <title>Learnify — Belajar Dimana Saja & Kapan Saja !</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>vendors/linericon/style.css">
@@ -29,12 +29,13 @@
     <script src="<?= base_url('assets/') ?>js/jquery-3.3.1.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/popper.js"></script>
     <script src="<?= base_url('assets/') ?>js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.1/lottie.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/lottie.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
             $("#nav<?= $this->uri->segment(2); ?>").addClass('active')
         })
     </script>
-
 </head>
 
 <body>
@@ -58,18 +59,15 @@
                 </div>
             </div>
         </div>
-
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
                     <a class="navbar-brand logo_h" href="<?= base_url('welcome') ?>"><img src="<?= base_url('assets/') ?>img/logo.png" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item" id="nav"><a class="nav-link" href="<?= base_url('welcome') ?>">Beranda</a></li>
@@ -80,11 +78,13 @@
                             </li>
                             <li class="nav-item" id="navkontak"><a class="nav-link" href="<?= base_url('welcome/kontak') ?>">Kontak</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">Masuk</a></li>
+                            <li class="nav-item"><a class="nav-link" href="javascript:void(0)">━</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter"> Masuk</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <!--================ END Header Menu Area =================-->
+    <!--================ End Header Menu Area =================-->

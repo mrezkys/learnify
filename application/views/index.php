@@ -5,7 +5,7 @@
         </div>
         <div class="container">
             <div class="banner_content text-center">
-                <h3 data-aos="fade-up" data-aos-duration="1600">Belajar Dimana Saja & Kapan Saja <br /> Mudah Dengan Learnify</h3>
+                <h3 data-aos="fade-up" data-aos-duration="1600">Belajar Dimana Saja & Kapan Saja Mudah Dengan Learnify</h3>
                 <p data-aos="fade-up" data-aos-duration="1900">Dengan Learnify kemudahan kegiatan belajar mengajar dapat terpenuhi. Para guru dan siswa dapat
                     belajar meski banyak halangan atau rintangan. Nikmati Pembelajaran terstruktur dan efektif menggunakan Learnify serta kemudahan belajar dengan menggunakan aplikasi kami. </p>
                 <a data-aos="fade-up" data-aos-duration="2000" class="main_btn" href="<?= base_url('user/registration') ?>#registration">Bergabung Sekarang <span class="lnr lnr-arrow-right"></span></a>
@@ -83,7 +83,7 @@
         <div class="row">
             <div class="col-md-7 mx-auto">
                 <div class="main_title">
-                    <h2 data-aos="fade-up" data-aos-duration="2000">Learnify Dibuat Untuk Meningkatkan Kualitas Pembelajaran Di Indonesia</h2>
+                    <h2 data-aos="fade-up" data-aos-duration="2000">Learnify Dibuat Untuk Meningkatkan Kualitas Pembelajaran di Indonesia</h2>
                     <p data-aos="fade-up" data-aos-duration="2200">Merciful revaluation burying love ultimate value inexpedient ubermensch. Holiest madness victorious morality hope endless christian madness. Love dead fearful transvaluation marvelous. Oneself right ideal abstract endless faith deceptions zarathustra grandeur law ubermensch free.</p>
                     <a href="https://github.com/syauqi/learnify"><button data-aos="fade-up" data-aos-duration="2400" class="bubbly-button">Download Learnify <span class="lnr lnr-arrow-right"></span></button></a>
                 </div>

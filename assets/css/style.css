@@ -213,7 +213,7 @@ button:focus {
 }
 
 .header_area .navbar .nav .nav-item .nav-link {
-	font: 500 12px/80px "Roboto", sans-serif;
+	font: 600 15px/80px "Poppins", sans-serif;
 	text-transform: uppercase;
 	color: #222222;
 	padding: 0px;
@@ -491,7 +491,7 @@ button:focus {
 
 .home_banner_area .banner_inner .banner_content h3 {
 	font-size: 42px;
-	font-family: "Roboto", serif;
+	font-family: "Roboto", sans-serif;
 	font-weight: 900;
 	margin-bottom: 20px;
 }
