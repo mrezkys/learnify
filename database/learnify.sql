@@ -66,6 +66,16 @@ INSERT INTO `guru` (`nip`, `email`, `nama_guru`, `password`, `nama_mapel`) VALUE
 
 -- --------------------------------------------------------
 
+CREATE TABLE 'pengumuman'(
+  `id` int(64) NOT NULL,
+  `judul` varchar(64) NOT NULL,
+  `deskripsi` varchar(1024) NOT NULL,
+  `date_created` int(64) NOT NULL,
+)
+
+INSERT TO 'pengumuman' ('id', 'judul', 'deskripsi'. 'date_created') 
+VALUES (1, 'Test 1', 'Lorem Ipsum', 1586163321)
+
 --
 -- Table structure for table `kelas`
 --

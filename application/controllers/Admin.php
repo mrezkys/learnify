@@ -21,6 +21,67 @@ class Admin extends CI_Controller
         $this->load->view('admin/index');
     }
 
+    public function pengumuman(){
+        $this->load->model('m_pengumuman');
+        $data['pengumuman'] = $this->m_pengumuman->tampil_data()->result();
+        $this->load->view('admin/pengumuman', $data);
+    }
+
+    public function tambah_pengumuman(){
+        $this->form_validation->set_rules('judul', 'Judul', 'required', [
+            'required' => 'Harap isi kolom Judul.',
+        ]);
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', [
+            'required' => 'Harap isi kolom deskripsi.',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('admin/add_pengumuman');
+        } else {
+            $data = [
+                'judul' => htmlspecialchars($this->input->post('judul', true)),
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
+            ];
+
+            $this->db->insert('pengumuman', $data);
+
+            $this->session->set_flashdata('success-reg', 'Berhasil!');
+            redirect(base_url('admin/pengumuman'));
+        }
+    }
+
+    public function delete_pengumuman($id){
+        $this->load->model('m_pengumuman');
+        $where = array('id' => $id);
+        $this->m_pengumuman->delete_pengumuman($where, 'pengumuman');
+        redirect('admin/pengumuman');
+    }
+
+    public function edit_pengumuman($id){
+        $this->load->model('m_pengumuman');
+        $where = array('id' => $id);
+        $data['pengumuman'] = $this->m_pengumuman->edit_pengumuman($where,'pengumuman')->result();
+        $this->load->view('admin/edit_pengumuman',$data);
+    }
+
+    public function update_pengumuman($id){
+        $this->load->model('m_pengumuman');
+        $judul = $this->input->post('judul');
+        $deskripsi = $this->input->post('deskripsi');
+
+        $data = array(
+            'judul' => $judul,
+            'deskripsi' => $deskripsi,
+        );
+
+        $where = array(
+            'id' => $id,
+        );
+
+        $this->m_pengumuman->update_pengumuman($where, $data, 'pengumuman');
+        redirect('admin/pengumuman');
+    }
+
     public function about_developer()
     {
         $data['user'] = $this->db->get_where('admin', ['email' =>
