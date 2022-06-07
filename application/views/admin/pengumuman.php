@@ -155,7 +155,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="card-title" style="color: black;">Management Pengumuman bagi Siswa & Guru</h2>
+                            <h2 class="card-title" style="color: black;">Management Pengumuman Bagi Siswa</h2>
                             <hr>
                             <p class="card-text"> After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction. </p>
                             <a href="<?= base_url('admin/tambah_pengumuman') ?>" class="btn btn-success">Tambah

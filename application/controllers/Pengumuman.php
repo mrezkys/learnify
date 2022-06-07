@@ -12,11 +12,11 @@ class Pengumuman extends CI_Controller{
         }
     }
     
-    // public function index(){
-    //     $this->load->model('m_pengumuman');
-    //     $data['pengumuman'] = $this->m_pengumuman->tampil_data()->result();
-    //     $this->load->view('admin/pengumuman', $data);
-    // }
+    public function index(){
+        $this->load->model('m_pengumuman');
+        $data['pengumuman'] = $this->m_pengumuman->tampil_data()->result();
+        $this->load->view('pengumuman/index', $data);
+    }
 
     
 }
