@@ -15,18 +15,23 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Tentang Developer - Learnify</title>
+    <title>Daftar Artikel - Learnify</title>
     <!-- General CSS Files -->
     <link rel="icon" href="<?= base_url('assets/') ?>img/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.0/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body>
@@ -44,7 +49,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                 </form>
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" style="margin-bottom:4px !important;" src="../assets/stisla-assets/img/avatar/avatar-2.png" class="rounded-circle mr-1 my-auto border-white">
+                            <img alt="image" style="margin-bottom:3px !important;" src="../assets/stisla-assets/img/avatar/avatar-2.png" class="rounded-circle mr-1 my-auto">
                             <div class="d-sm-none d-lg-inline-block" style="font-size:15px;">Hello, <?php
                                                                                                     $data['user'] = $this->db->get_where('admin', ['email' =>
                                                                                                     $this->session->userdata('email')])->row_array();
@@ -65,19 +70,19 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                     <div class="sidebar-brand text-danger">
                         <div>
                             <a href="<?= base_url('admin') ?>" style="font-size: 30px;font-weight:900;font-family: 'Poppins', sans-serif;" class="text-success text-center"><i style="font-size: 30px;" class="fas fa-graduation-cap"></i> |
-                                Learnify <sup>3</sup> </a>
+                                Learnify <sup>3</sup></a>
                         </div>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="<?= base_url('admin') ?>">LY</a>
+                        <a href="<?= base_url('admin') ?>">LY <sup>3</sup></a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header ">Dashboard</li>
-                        <li class="nav-item dropdown ">
-                            <a href="<?= base_url('admin') ?>" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-                        </li>                        
-                        <li class="menu-header">Management Artikel</li>
                         <li class="nav-item dropdown">
+                            <a href="<?= base_url('admin') ?>" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+                        </li>
+                        <li class="menu-header">Management Artikel</li>
+                        <li class="nav-item dropdown active">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
                                 <span>Artikel</span></a>
                             <ul class="dropdown-menu">
@@ -88,18 +93,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                             </ul>
                         </li>
                         <li class="menu-header">Management Pengumuman</li>
-                        <li class="nav-item dropdown ">
-                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
-                                <span>Pengumuman</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/pengumuman') ?>">Daftar Pengumuman</a>
-                                </li>
-                                <li><a class="nav-link" href="<?= base_url('admin/tambah_pengumuman') ?>">Posting Pengumuman</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-header">Management Pengumuman</li>
-                        <li class="nav-item dropdown ">
+                        <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
                                 <span>Pengumuman</span></a>
                             <ul class="dropdown-menu">
@@ -126,7 +120,6 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 </li>
                                 <li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
                                 </li>
-
                             </ul>
                         </li>
                         <li class="menu-header">Management Materi</li>
@@ -138,11 +131,10 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 </li>
                                 <li><a class="nav-link" href="<?= base_url('admin/tambah_materi') ?>">Tambah Materi</a>
                                 </li>
-
                             </ul>
                         </li>
                         <li class="menu-header">About Developer</li>
-                        <li class="nav-item dropdown active">
+                        <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-address-card"></i>
                                 <span>Developer</span></a>
                             <ul class="dropdown-menu">
@@ -161,38 +153,121 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
-                    <div class="">
-                        <div class="hero text-white hero-bg-image" data-background="https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=649&q=80">
-                            <div class="col-md-4 mx-auto rounded-circle bg-white p-3" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-                                <img src="<?= base_url('assets/') ?>syauqi.jpg" class="card-img-top rounded-circle img-responsive" alt="...">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Management Artikel</h2>
+                            <hr>
+                            <p class="card-text"> After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction. </p>
+                            <a href="<?= base_url('admin/tambah_artikel') ?>" class="btn btn-success">Tambah
+                                Artikel ⭢ </a>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="bg-white p-4" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
+                                <div class="table-responsive">
+                                    <table id="example" class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr class="text-center">
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Judul</th>
+                                                <th scope="col">Deskripsi</th>
+                                                <th scope="col">Penulis</th>
+                                                <th scope="col">Posted</th>
+                                                <th scope="col">Option</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php
+                                            foreach ($artikel as $u) {
+                                            ?>
+                                                <tr class="text-center">
+
+                                                    <th scope="row">
+                                                        <?php echo $u->id?>
+                                                    </th>
+
+                                                    <th scope="row">
+                                                        <?php echo $u->judul?>
+                                                    </th>
+
+                                                    <td>
+                                                        <?php echo $u->deskripsi ?>
+                                                    </td>
+
+                                                    <td>
+                                                        <?php echo $u->penulis ?>
+                                                    </td>
+
+                                                    <td>
+                                                        <?php echo $u->date_created ?>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <a href="<?php echo site_url('admin/edit_artikel/' . $u->id); ?>" class="btn btn-info">Update ⭢</a>
+
+                                                        <a href="<?php echo site_url('admin/delete_artikel/' . $u->id); ?>" class="btn btn-danger remove">Delete ✖</a>
+                                                    </td>
+
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <p class="small font-weight-bold">* Angka 1 menunjukan akun telah aktif sedangkan
+                                        Angka
+                                        0 menunjukan akun
+                                        belum
+                                        aktif</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="">
-                        <div class="card" style="width:100%;">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Syauqi Zaidan Khairan Khalaf</h2>
-                                <hr>
-                                <p class="card-text">Perfectionist Web Developer with one years of experience as a Web Developer and Web Designer. Skilled at Designing and developing Websites. Excellent written and oral communication skills; capable of explaining complex software issues in easy-to-understand terms. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
+                    
                 </section>
             </div>
-            <!-- End Main Content -->
-
-            <!-- Start Footer -->
-            <footer class="main-footer">
-                <div class="text-center">
-                    Copyright &copy; 2020 <div class="bullet"></div><a href="https://github.com/syauqi">Syauqi Zaidan Khairan Khalaf</a>
-                </div>
-            </footer>
-            <!-- End Footer -->
-
         </div>
     </div>
+    <!-- End Main Content -->
+
+    <!-- Start Sweetalert -->
+
+    <?php if ($this->session->flashdata('success-edit')) : ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Data Siswa Telah Dirubah!',
+                text: 'Selamat data berubah!',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        </script>
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('user-delete')) : ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Data Siswa Telah Dihapus!',
+                text: 'Selamat data telah Dihapus!',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        </script>
+    <?php endif; ?>
+
+    <!-- End Sweetalert -->
+
+    <!-- Start Footer -->
+    <footer class="main-footer">
+        <div class="text-center">
+            Copyright &copy; 2020 <div class="bullet"></div><a href="https://github.com/syauqi">Syauqi Zaidan Khairan Khalaf</a>
+        </div>
+    </footer>
+    <!-- End Footer -->
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -203,10 +278,17 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="<?= base_url('assets/') ?>stisla-assets/js/stisla.js"></script>
+    <!-- JS Libraies -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
     <!-- Template JS File -->
     <script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
     <script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
-    <!-- Page Specific JS File -->
 </body>
 
 </html>

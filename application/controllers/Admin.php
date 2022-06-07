@@ -21,6 +21,73 @@ class Admin extends CI_Controller
         $this->load->view('admin/index');
     }
 
+    public function artikel(){
+        $this->load->model('m_artikel');
+        $data['artikel'] = $this->m_artikel->tampil_data()->result();
+        $this->load->view('admin/artikel', $data);
+    }
+
+    public function tambah_artikel(){
+        $this->form_validation->set_rules('judul', 'Judul', 'required', [
+            'required' => 'Harap isi kolom Judul.',
+        ]);
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', [
+            'required' => 'Harap isi kolom deskripsi.',
+        ]);
+        $this->form_validation->set_rules('penulis', 'Penulis', 'required', [
+            'required' => 'Harap isi kolom penulis.',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('admin/add_artikel');
+        } else {
+            $data = [
+                'judul' => htmlspecialchars($this->input->post('judul', true)),
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
+                'penulis' => htmlspecialchars($this->input->post('penulis', true)),
+            ];
+
+            $this->db->insert('artikel', $data);
+
+            $this->session->set_flashdata('success-reg', 'Berhasil!');
+            redirect(base_url('admin/artikel'));
+        }
+    }
+
+    public function delete_artikel($id){
+        $this->load->model('m_artikel');
+        $where = array('id' => $id);
+        $this->m_artikel->delete_artikel($where, 'artikel');
+        redirect('admin/artikel');
+    }
+
+    public function edit_artikel($id){
+        $this->load->model('m_artikel');
+        $where = array('id' => $id);
+        $data['artikel'] = $this->m_artikel->edit_artikel($where,'artikel')->result();
+        $this->load->view('admin/edit_artikel',$data);
+    }
+
+    public function update_artikel($id){
+        $this->load->model('m_artikel');
+        $judul = $this->input->post('judul');
+        $deskripsi = $this->input->post('deskripsi');
+        $penulis = $this->input->post('penulis');
+
+        $data = array(
+            'judul' => $judul,
+            'deskripsi' => $deskripsi,
+            'penulis' => $penulis,
+        );
+
+        $where = array(
+            'id' => $id,
+        );
+
+        $this->m_artikel->update_artikel($where, $data, 'artikel');
+        redirect('admin/artikel');
+    }
+
     public function pengumuman(){
         $this->load->model('m_pengumuman');
         $data['pengumuman'] = $this->m_pengumuman->tampil_data()->result();
