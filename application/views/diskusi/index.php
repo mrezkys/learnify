@@ -72,11 +72,11 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                                                                         echo $data['user']['nama'];
                                                                                                         ?></a>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="<?= base_url('pengumuman') ?>">Pengumuman</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="<?= base_url('diskusi') ?>">Diskusi</a>
+                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('diskusi') ?>">Diskusi</a>
                             </li>
                             <li class=" nav-item "><a class=" nav-link text-danger" href="<?= base_url('welcome/logout') ?>">Log Out</a>
                             </li>
@@ -94,22 +94,10 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
         <div class="bg-white mx-auto p-4 buat-text" data-aos="fade-down" data-aos-duration="1400" style="width: 100%; border-radius:10px;">
             <div class="row" style="color: black; font-family: 'poppins';">
                 <div class="col-md-12 mt-1">
-                    <h1 class="display-4" style="color: black; font-family:'poppins';" data-aos="fade-down" data-aos-duration="1400">Selamat Datang
-                        di Learnify <span style="font-size: 40px;">👋🏻
-                        </span> </h1>
-                    <p>Hello Students! , Ini merupakan halaman utama learnify ! Silahkan pilih kelas yang akan kamu
-                        akses
-                        dan pilih mata pelajaran yang ingin kamu pelajari. Selamat belajar ya students!</p>
-                    <hr>
-                    <h4 style="line-height: 4px;" data-aos="fade-down" data-aos-duration="1700"><?php
-                                                                                                $data['user'] = $this->db->get_where('siswa', ['email' =>
-                                                                                                $this->session->userdata('email')])->row_array();
-                                                                                                echo $data['user']['nama'];
-                                                                                                ?> - Learnify Students</h3>
-                        <p data-aos="fade-down" data-aos-duration="1800">Silahkan pilih kelas yang akan kamu akses
-                            dibawah
-                            ini!
-                        </p>
+                    <h1 class="display-4" style="color: black; font-family:'poppins';" data-aos="fade-down" data-aos-duration="1400">Diskusi</h1>
+                    <p>Hello Students! , Ini merupakan halaman diskusi learnify !</p>
+                    <a href="<?= base_url('diskusi/manage_diskusi') ?>" class="btn btn-success">Manage
+                                Diskusi ⭢ </a>
                 </div>
             </div>
         </div>
@@ -118,41 +106,26 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
 
 
     <br>
-
-
-    <!-- Start Class Card -->
     <div class="container">
-        <div class="row mt-4 mb-5 justify-content-center">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center " data-aos-duration="1900" data-aos="fade-right">
-                        <a href="<?= base_url('user/kelas10') ?>">
-                            <div class="card-kelas text-center">
-                                <img src="<?= base_url('assets/') ?>img/kelas10.png" style="object-fit: cover;" class="card-img-top img-fluid" alt="...">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center " data-aos-duration="1900" data-aos="fade-down">
-                        <a href="<?= base_url('user/kelas11') ?>">
-                            <div class="card-kelas">
-                                <img src="<?= base_url('assets/') ?>img/kelas11.png" class="card-img-top" alt="...">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-left">
-                        <a href="<?= base_url('user/kelas12') ?>">
-                            <div class="card-kelas">
-                                <img src="<?= base_url('assets/') ?>img/kelas12.png" class="card-img-top" alt="...">
-                            </div>
-                        </a>
+        <div class="row">
+        <?php
+            foreach ($diskusi as $u) {
+        ?>
+            <div class="col-md-4">
+                <div class="card" style="height: 240px;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: black;"><?= $u->judul ?></h5>
+                        <p class="card-subtitle mb-2"><?= $u->date_created ?></p>
+                        <p class="card-text"> <?= mb_strimwidth($u->deskripsi,0,156)."..." ?></p>
+                        <a href="<?php echo site_url('diskusi/detail/' . $u->id); ?>" class="card-link">Selengkapnya</a>
                     </div>
                 </div>
             </div>
+        <?php
+            }
+        ?>
         </div>
     </div>
-    <!-- End Class Card -->
-
-
     <br>
 
 

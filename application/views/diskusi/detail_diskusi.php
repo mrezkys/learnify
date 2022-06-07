@@ -72,11 +72,11 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                                                                         echo $data['user']['nama'];
                                                                                                         ?></a>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="<?= base_url('pengumuman') ?>">Pengumuman</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="<?= base_url('diskusi') ?>">Diskusi</a>
+                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('diskusi') ?>">Diskusi</a>
                             </li>
                             <li class=" nav-item "><a class=" nav-link text-danger" href="<?= base_url('welcome/logout') ?>">Log Out</a>
                             </li>
@@ -91,69 +91,70 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
 
     <!-- Start Greetings Card -->
     <div class="container">
-        <div class="bg-white mx-auto p-4 buat-text" data-aos="fade-down" data-aos-duration="1400" style="width: 100%; border-radius:10px;">
-            <div class="row" style="color: black; font-family: 'poppins';">
-                <div class="col-md-12 mt-1">
-                    <h1 class="display-4" style="color: black; font-family:'poppins';" data-aos="fade-down" data-aos-duration="1400">Selamat Datang
-                        di Learnify <span style="font-size: 40px;">👋🏻
-                        </span> </h1>
-                    <p>Hello Students! , Ini merupakan halaman utama learnify ! Silahkan pilih kelas yang akan kamu
-                        akses
-                        dan pilih mata pelajaran yang ingin kamu pelajari. Selamat belajar ya students!</p>
+        <section class="section">
+            <div class="card pt-2 pb-2">
+                <div class="card-body">
+                    <h2 class="card-title" style="color: black;"><?= $diskusi[0]->judul ?></h2>
                     <hr>
-                    <h4 style="line-height: 4px;" data-aos="fade-down" data-aos-duration="1700"><?php
-                                                                                                $data['user'] = $this->db->get_where('siswa', ['email' =>
-                                                                                                $this->session->userdata('email')])->row_array();
-                                                                                                echo $data['user']['nama'];
-                                                                                                ?> - Learnify Students</h3>
-                        <p data-aos="fade-down" data-aos-duration="1800">Silahkan pilih kelas yang akan kamu akses
-                            dibawah
-                            ini!
-                        </p>
+                    <h4 class=""><?= $diskusi[0]->deskripsi ?></h4>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-    <!-- End Greetings Card -->
-
-
     <br>
-
-
-    <!-- Start Class Card -->
     <div class="container">
-        <div class="row mt-4 mb-5 justify-content-center">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center " data-aos-duration="1900" data-aos="fade-right">
-                        <a href="<?= base_url('user/kelas10') ?>">
-                            <div class="card-kelas text-center">
-                                <img src="<?= base_url('assets/') ?>img/kelas10.png" style="object-fit: cover;" class="card-img-top img-fluid" alt="...">
+        <section class="section">
+            <div class="card pt-2 pb-2">
+                <div class="card-body">
+                    <h2 class="card-title" style="color: black;">Komentar</h2>
+                    <form method="POST" action="<?= base_url('diskusi/tambah_komentar/'.$diskusi[0]->id) ?>">
+                        <div class="form-group">
+                            <input id="id" type="text" class="form-control" name="nama" value="<?= $data['user']['nama']?>" hidden>
+                            <?= form_error('id', '<small class="text-danger">', '</small>'); ?>
+                            <div class="invalid-feedback">
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center " data-aos-duration="1900" data-aos="fade-down">
-                        <a href="<?= base_url('user/kelas11') ?>">
-                            <div class="card-kelas">
-                                <img src="<?= base_url('assets/') ?>img/kelas11.png" class="card-img-top" alt="...">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="komentar" type="text" class="form-control" name="komentar"></textarea>
+                            <?= form_error('komentar', '<small class="text-danger">', '</small>'); ?>
+                            <div class="invalid-feedback">
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-left">
-                        <a href="<?= base_url('user/kelas12') ?>">
-                            <div class="card-kelas">
-                                <img src="<?= base_url('assets/') ?>img/kelas12.png" class="card-img-top" alt="...">
-                            </div>
-                        </a>
-                    </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg btn-block">
+                                Posting Komentar ⭢
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-    <!-- End Class Card -->
-
-
+    
     <br>
+    
+    <?php
+    if($komentar != null){
+        foreach ($komentar as $k) {
+    ?>
+    <div class="container">
+        <section class="section">
+            <div class="card pt-2 pb-2">
+                <div class="card-body">
+                    <h4 class="card-title" style="color: black;">Jawaban dari : <?php echo $k["posted_by"]?></h4>
+                    <hr>
+                    <p class="">Jawaban :  <?php echo $k["komentar"]?></p>
+                    <p class=""><?php echo $k["date_created"]?></p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <br>
+    <?php
+        }
+        }
+    ?>
 
 
     <!-- Start Animate On Scroll -->

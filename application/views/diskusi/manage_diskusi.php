@@ -72,11 +72,11 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                                                                         echo $data['user']['nama'];
                                                                                                         ?></a>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="<?= base_url('pengumuman') ?>">Pengumuman</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="<?= base_url('diskusi') ?>">Diskusi</a>
+                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('diskusi') ?>">Diskusi</a>
                             </li>
                             <li class=" nav-item "><a class=" nav-link text-danger" href="<?= base_url('welcome/logout') ?>">Log Out</a>
                             </li>
@@ -91,68 +91,77 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
 
     <!-- Start Greetings Card -->
     <div class="container">
-        <div class="bg-white mx-auto p-4 buat-text" data-aos="fade-down" data-aos-duration="1400" style="width: 100%; border-radius:10px;">
-            <div class="row" style="color: black; font-family: 'poppins';">
-                <div class="col-md-12 mt-1">
-                    <h1 class="display-4" style="color: black; font-family:'poppins';" data-aos="fade-down" data-aos-duration="1400">Selamat Datang
-                        di Learnify <span style="font-size: 40px;">👋🏻
-                        </span> </h1>
-                    <p>Hello Students! , Ini merupakan halaman utama learnify ! Silahkan pilih kelas yang akan kamu
-                        akses
-                        dan pilih mata pelajaran yang ingin kamu pelajari. Selamat belajar ya students!</p>
-                    <hr>
-                    <h4 style="line-height: 4px;" data-aos="fade-down" data-aos-duration="1700"><?php
-                                                                                                $data['user'] = $this->db->get_where('siswa', ['email' =>
-                                                                                                $this->session->userdata('email')])->row_array();
-                                                                                                echo $data['user']['nama'];
-                                                                                                ?> - Learnify Students</h3>
-                        <p data-aos="fade-down" data-aos-duration="1800">Silahkan pilih kelas yang akan kamu akses
-                            dibawah
-                            ini!
-                        </p>
-                </div>
-            </div>
-        </div>
+    <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Manage Diskusi</h2>
+                            <hr>
+                            <p class="card-text"> Ini adalah halaman untuk melihat dan menambahkan diskusi </p>
+                            <a href="<?= base_url('diskusi/tambah_diskusi') ?>" class="btn btn-success">Posting
+                                Diskusi ⭢ </a>
+                        </div>
+                    </div>
+
+                    <br>
+                    
+                    <div class="card">
+                        <div class="col-md-12">
+                            <div class="bg-white p-4" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
+                                <div class="table-responsive">
+                                    <table id="example" class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr class="text-center">
+                                                <th scope="col">Judul</th>
+                                                <th scope="col">Deskripsi</th>
+                                                <th scope="col">Posted</th>
+                                                <th scope="col">Lihat</th>
+                                                <th scope="col">Option</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php
+                                            foreach ($diskusi as $u) {
+                                            ?>
+                                                <tr class="text-left">
+
+                                                    <th scope="row">
+                                                        <?php echo $u->judul?>
+                                                    </th>
+
+                                                    <td>
+                                                        <?php echo $u->deskripsi ?>
+                                                    </td>
+
+                                                    <td>
+                                                        <?php echo $u->date_created ?>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <a href="<?php echo site_url('diskusi/detail/' . $u->id); ?>" class="btn btn-success">Lihat</a>
+                                                    </td>
+
+                                                    
+
+                                                    <td class="text-center">
+                                                        <a href="<?php echo site_url('diskusi/edit_diskusi/' . $u->id); ?>" class="btn btn-info">Update ⭢</a>
+
+                                                        <a href="<?php echo site_url('diskusi/delete_diskusi/' . $u->id); ?>" class="btn btn-danger remove">Delete ✖</a>
+                                                    </td>
+
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </section>
     </div>
-    <!-- End Greetings Card -->
-
-
-    <br>
-
-
-    <!-- Start Class Card -->
-    <div class="container">
-        <div class="row mt-4 mb-5 justify-content-center">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center " data-aos-duration="1900" data-aos="fade-right">
-                        <a href="<?= base_url('user/kelas10') ?>">
-                            <div class="card-kelas text-center">
-                                <img src="<?= base_url('assets/') ?>img/kelas10.png" style="object-fit: cover;" class="card-img-top img-fluid" alt="...">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center " data-aos-duration="1900" data-aos="fade-down">
-                        <a href="<?= base_url('user/kelas11') ?>">
-                            <div class="card-kelas">
-                                <img src="<?= base_url('assets/') ?>img/kelas11.png" class="card-img-top" alt="...">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-left">
-                        <a href="<?= base_url('user/kelas12') ?>">
-                            <div class="card-kelas">
-                                <img src="<?= base_url('assets/') ?>img/kelas12.png" class="card-img-top" alt="...">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Class Card -->
-
-
     <br>
 
 

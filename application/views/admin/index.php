@@ -211,6 +211,36 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="card card-statistic-1">
+                                <div class="card-icon bg-primary">
+                                    <i class="far fa-user"></i>
+                                </div>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4>Pengumuman</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php echo $this->db->count_all('pengumuman'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="card card-statistic-1">
+                                <div class="card-icon bg-danger">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4>Artikel</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php echo $this->db->count_all('artikel'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="">
                         <div class="card" style="width:100%;">

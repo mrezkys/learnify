@@ -73,6 +73,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item" id="nav"><a class="nav-link" href="<?= base_url('welcome') ?>">Beranda</a></li>
+                            <li class="nav-item" id="navtentang"><a class="nav-link" href="<?= base_url('artikel') ?>">Artikel</a>
                             <li class="nav-item" id="navtentang"><a class="nav-link" href="<?= base_url('welcome/tentang') ?>">Tentang</a>
                             </li>
                             <li class="nav-item submenu dropdown" id="navpelajaran">
